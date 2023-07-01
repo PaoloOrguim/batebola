@@ -1,0 +1,80 @@
+.Divisoria {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #1e1e1e;
+  z-index: 1;
+}
+
+.App {
+  text-align: center;
+  position: relative;
+  background: #383838;
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Definindo a altura para 100vh */
+  width: 100%;
+}
+
+
+.LogoSite {
+  position: fixed;
+  font-size: 25px;
+  top: 20px;
+  left: 40px;
+  margin-left: 10px;
+  color: white;
+  height: 50px;
+  width: 50px;
+  z-index: 2;
+}
+
+.App-logo {
+  height: 50px;
+  width: 50px;
+  pointer-events: none;
+  position: fixed;
+  top: 10px;
+  left: 0px;
+  z-index: 2;
+}
+
+.Menu {
+  position: absolute;
+  top: 70px;
+  left: 10px;
+}
+
+.Menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.Menu-item {
+  background: linear-gradient(to bottom, #282c34, #282c34);
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.Content {
+  position: relative; /* Adicionamos essa propriedade para que o conteúdo seja posicionado corretamente */
+  padding: 20px;
+  margin-left: 15px;
+  min-height: calc(100vh - 70px);
+  z-index: 0;
+}
+
+.Background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10%;
+  height: 100%;
+  background: #1e1e1e;
+  z-index:0;
+}
