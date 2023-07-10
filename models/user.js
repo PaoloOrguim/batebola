@@ -13,10 +13,10 @@ const UserSchema = new Schema({
   image: {
     type: String,
   },
-  chavepix: {
-    type: String,
-    required: [true, 'ChavePix is required!'],
-  },
+  //chavepix: {
+  //  type: String,
+  //  required: [true, 'ChavePix is required!'],
+  //},
 });
 
 const User = models.User || model("User", UserSchema);
