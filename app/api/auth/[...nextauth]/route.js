@@ -32,7 +32,7 @@ const handler = NextAuth({
             email: profile.email,
             username: profile.name ? profile.name.replace(/\s/g, "").toLowerCase() : "",
             image: profile.picture,
-            chavepix: profile.chavepix,
+            //chavepix: profile.chavepix,
           });
         }
 
