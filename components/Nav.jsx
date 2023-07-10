@@ -28,7 +28,7 @@ const Nav = () => {
             <Image
                 src= '/assets/images/logo.png'
                 alt= 'BateBola Logo'
-                width={50}
+                width={40}
                 height={30}
                 className='object-contain'
             />
@@ -50,13 +50,13 @@ const Nav = () => {
                         Desconectar
                     </button>
                     
-                    <Link href='/perfil'>
+                    <Link href='/profile'>
                         <Image 
                             src={session?.user.image}
                             width={37}
                             height={37}
                             className='rounded-full'
-                            alt='perfil'
+                            alt='profile'
                         />
                     </Link>
                 </div>
