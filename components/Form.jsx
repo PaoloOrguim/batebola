@@ -1,7 +1,12 @@
 import Link from "next/link";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+  const [data, setData] = useState(post.data ? new Date(post.data) : null);
+  const [hora, setHora] = useState(post.hora ? new Date(post.hora) : null);
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
@@ -15,9 +20,22 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   };
 
   const handleSelectChange = (event) => {
-    console.log(event.target.value);
     const { name, value } = event.target;
     setPost({ ...post, [name]: value });
+  };
+
+  const handleDataChange = (date) => {
+    // Verificar se a data selecionada é maior ou igual à data atual
+    const currentDate = new Date();
+    if (date >= currentDate) {
+      setData(date);
+      setPost({ ...post, data: date ? date.toISOString() : "" });
+    }
+  };
+
+  const handleHoraChange = (time) => {
+    setHora(time);
+    setPost({ ...post, hora: time ? time.toISOString() : "" });
   };
 
   const parseCurrency = (value) => {
@@ -55,21 +73,39 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             Escolha o esporte
           </label>
           <select
-          id="esporte"
-          name="esporte"
-          value={post.esporte}
-          onChange={handleSelectChange}
-          required
-          className="form_select"
-        >
-          <option value="" disabled>
-            Selecione o esporte
-          </option>
-          <option value="Futebol">Futebol</option>
-          <option value="Vôlei">Vôlei</option>
-          <option value="Basquete">Basquete</option>
-          {/* Adicione outras opções de esporte aqui */}
-        </select>
+            id="esporte"
+            name="esporte"
+            value={post.esporte}
+            onChange={handleSelectChange}
+            required
+            className="form_select"
+          >
+            <option value="" disabled>
+              Selecione o esporte
+            </option>
+            <option value="Futebol">Futebol</option>
+            <option value="Vôlei">Vôlei</option>
+            <option value="Basquete">Basquete</option>
+            {/* Adicione outras opções de esporte aqui */}
+          </select>
+        </div>
+
+        <div className="flex flex-col">
+          <label
+            htmlFor="data"
+            className="font-satoshi font-semibold text-base text-gray-700 mb-2"
+          >
+            Data
+          </label>
+          <DatePicker
+            id="data"
+            name="data"
+            selected={data}
+            onChange={handleDataChange}
+            placeholderText="Selecione a data"
+            dateFormat="dd/MM/yyyy"
+            className="form_input"
+          />
         </div>
 
         <div className="flex flex-col">
@@ -87,6 +123,29 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             onChange={handleInputChange}
             placeholder="Digite o endereço"
             required
+            className="form_input"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label
+            htmlFor="hora"
+            className="font-satoshi font-semibold text-base text-gray-700 mb-2"
+          >
+            Hora
+          </label>
+          <DatePicker
+            id="hora"
+            name="hora"
+            selected={hora}
+            onChange={handleHoraChange}
+            placeholderText="Selecione a hora"
+            showTimeSelect
+            showTimeSelectOnly
+            timeIntervals={15}
+            timeCaption="Hora"
+            dateFormat="HH:mm"
+            timeFormat="HH:mm"
             className="form_input"
           />
         </div>

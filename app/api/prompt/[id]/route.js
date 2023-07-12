@@ -15,7 +15,7 @@ export const GET = async (request, { params }) => {
 } 
 
 export const PATCH = async (request, { params }) => {
-    const {esporte, endereco,valor,chavePix,numPessoas} = await request.json();
+    const {esporte, endereco,valor,chavePix,numPessoas,data,hora} = await request.json();
 
     try{
         await connectToDB();
@@ -29,6 +29,8 @@ export const PATCH = async (request, { params }) => {
         existingPrompt.valor = valor;
         existingPrompt.chavePix = chavePix;
         existingPrompt.numPessoas = numPessoas;
+        existingPrompt.data = data;
+        existingPrompt.hora = hora;
 
         await existingPrompt.save();
 
