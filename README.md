@@ -1,21 +1,17 @@
-# Next.js 13 Full Course 2023 | Build and Deploy a Full Stack App Using the Official React Framework
-![AI Prompt Sharing](https://i.ibb.co/9pQNZZy/Thumbnail-27.png)
+Engenharia de Software - Site do BateBola
+![BateBolaLogo](https://github.com/PaoloOrguim/batebola/assets/89609677/89bf19fd-2a29-4fef-89d8-32d219fa7575)
 
-## Introduction
-Next.js recently became the official React framework as outlined in React docs. In this course, you'll learn the most important Next.js concepts and how they fit into the React ecosystem. Finally, you'll put your skills to the test by building a modern full-stack Next 13 application.
- 
-In this video, you'll learn:
-- Next.js 13 App Folder Structure
-- Next.js 13 Client Components vs Server Components
-- Next.js 13 File-based Routing (including dynamic and nested routes)
-- Next.js 13 page, layout, loading, and error Special Files
-- Next.js 13 Serverless Route Handlers (Next API, Full Stack Apps)
-- Next.js 13 Metadata and Search Engine Optimization (SEO)
-- Three ways to fetch data in Next.js:
-   - Server Side Rendering (SSR),
-   - Static Site Generation (SSG)
-   - Incremental Static Generation (ISR)
+Explicação do site
+O objetivo do BateBola é servir como plataforma que agrega indivíduos a partir de 18 anos de idade e arenas esportivas com um objetivo em comum:
+realizar um evento de esporte coletivo. O aplicativo possui um sistema para localizar eventos ocorrendo próximos a você, a partir de seus filtros
+de preferência: de esporte e público participante, através de um mapa, em uma interface clara, simples e intuitiva. Sendo possível criar um evento
+próprio e participar de eventos criados por outros jogadores.
 
-## Want to land your dream programming job in 3 - 6 months?
-⭐ JSM Masterclass Experience - https://jsmastery.pro/masterclass
-Become a Software Engineer. Guaranteed.
+Como testar
+Para rodar o projeto, entrem no cmd e:
+$ cd pasta/do/projeto
+$ git clone link
+$ cd pasta/do/projeto/batebola
+$ npm install
+$ npm run dev
+Imagem
