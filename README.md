@@ -1,6 +1,6 @@
 # Engenharia de Software - Site do BateBola
 
-<img src="https://github.com/PaoloOrguim/batebola/blob/main/public/assets/images/logo.png?raw=true" alt="BateBolaLogo" width="250">
+<img src="https://github.com/PaoloOrguim/batebola/blob/main/public/assets/images/logo.png?raw=true" alt="BateBolaLogo" width="100">
 
 ## Explicação do site
 
