@@ -15,7 +15,7 @@ Para rodar o projeto, entrem no cmd e:
 
 ```bash
 $ cd pasta/do/projeto
-$ git clone link
+$ git clone https://github.com/PaoloOrguim/batebola.git
 $ cd pasta/do/projeto/batebola
 $ npm install
 $ npm run dev
