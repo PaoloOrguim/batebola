@@ -7,7 +7,7 @@ const Home = () => {
             Crie e participe de
             <br className="max-md:hidden"/>
             <span className="orange_gradient text-center">
-                Eventos esportivos
+                eventos esportivos
             </span>
         </h1>
         <p className="desc text-center">

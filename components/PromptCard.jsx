@@ -26,6 +26,11 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
     setTimeout(() => setCopied(false), 3000);
   };
 
+  const getImageSrc = (esporte) => {
+    const formattedEsporte = esporte.toLowerCase().replace(/\s/g, "");
+    return `/assets/images/${formattedEsporte}.png`;
+  };
+
   return (
     <div className='prompt_card'>
       <div className='flex justify-between items-start gap-5'>
@@ -65,12 +70,33 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
         </div>
       </div>
 
-      <p className='my-4 font-satoshi text-sm text-gray-700'>{post.prompt}</p>
+      {post.esporte && (
+        <Image
+          src={getImageSrc(post.esporte)}
+          alt={`${post.esporte}_image`}
+          width={1000}
+          height={100}
+          className='my-4'
+        />
+      )}
+
       <p
-        className='font-inter text-sm blue_gradient cursor-pointer'
-        onClick={() => handleTagClick && handleTagClick(post.tag)}
-      >
-        #{post.tag}
+        className='my-4 font-inter text-sm blue_gradient cursor-pointer'
+        onClick={() => handleTagClick && handleTagClick(post.esporte)}
+      >   
+        {post.esporte}
+      </p>
+      <p className='my-4 font-satoshi text-sm text-gray-700'>
+        Endereço: {post.endereco}
+      </p>
+      <p className='my-4 font-satoshi text-sm text-gray-700'>
+        Valor: {post.valor}
+      </p>
+      <p className='my-4 font-satoshi text-sm text-gray-700'>
+        Numero de pessoas: {post.numPessoas}
+      </p>
+      <p className='my-4 font-satoshi text-sm text-gray-700'>
+        chavePix: {post.chavePix}
       </p>
 
       {session?.user.id === post.creator._id && pathName === "/profile" && (

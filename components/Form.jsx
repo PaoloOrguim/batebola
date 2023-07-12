@@ -1,59 +1,169 @@
 import Link from "next/link";
+import { useState } from "react";
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === "valor") {
+      const numericValue = parseCurrency(value);
+      const formattedValue = formatCurrency(numericValue);
+      setPost({ ...post, [name]: formattedValue });
+    } else {
+      setPost({ ...post, [name]: value });
+    }
+  };
+
+  const handleSelectChange = (event) => {
+    console.log(event.target.value);
+    const { name, value } = event.target;
+    setPost({ ...post, [name]: value });
+  };
+
+  const parseCurrency = (value) => {
+    const numericValue = value.replace(/[^\d]/g, "");
+    return parseFloat(numericValue) / 100;
+  };
+
+  const formatCurrency = (value) => {
+    const numberFormat = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+    });
+    return numberFormat.format(value);
+  };
+
   return (
-    <section className='w-full max-w-full flex-start flex-col'>
-      <h1 className='head_text text-left'>
-        <span className='blue_gradient'>{type} Evento</span>
+    <section className="w-full max-w-full flex-start flex-col">
+      <h1 className="head_text text-left">
+        <span className="blue_gradient">{type} Evento</span>
       </h1>
-      <p className='desc text-left max-w-md'>
+      <p className="desc text-left max-w-md">
         Encontre jogadores disponíveis para seu evento
       </p>
 
       <form
         onSubmit={handleSubmit}
-        className='mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism'
+        className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
       >
-        <label>
-          <span className='font-satoshi font-semibold text-base text-gray-700'>
-            Escreva seu evento
-          </span>
+        <div className="flex flex-col">
+          <label
+            htmlFor="esporte"
+            className="font-satoshi font-semibold text-base text-gray-700 mb-2"
+          >
+            Escolha o esporte
+          </label>
+          <select
+          id="esporte"
+          name="esporte"
+          value={post.esporte}
+          onChange={handleSelectChange}
+          required
+          className="form_select"
+        >
+          <option value="" disabled>
+            Selecione o esporte
+          </option>
+          <option value="Futebol">Futebol</option>
+          <option value="Vôlei">Vôlei</option>
+          <option value="Basquete">Basquete</option>
+          {/* Adicione outras opções de esporte aqui */}
+        </select>
+        </div>
 
-          <textarea
-            value={post.prompt}
-            onChange={(e) => setPost({ ...post, prompt: e.target.value })}
-            placeholder='Escreva seu evento aqui'
-            required
-            className='form_textarea '
-          />
-        </label>
-
-        <label>
-          <span className='font-satoshi font-semibold text-base text-gray-700'>
-            Escreva o esporte{" "}
-            <span className='font-normal'>
-              (Futebol, volei, basquete, etc.)
-            </span>
-          </span>
+        <div className="flex flex-col">
+          <label
+            htmlFor="endereco"
+            className="font-satoshi font-semibold text-base text-gray-700 mb-2"
+          >
+            Endereço
+          </label>
           <input
-            value={post.tag}
-            onChange={(e) => setPost({ ...post, tag: e.target.value })}
-            type='text'
-            placeholder='Esporte'
+            id="endereco"
+            name="endereco"
+            type="text"
+            value={post.endereco}
+            onChange={handleInputChange}
+            placeholder="Digite o endereço"
             required
-            className='form_input'
+            className="form_input"
           />
-        </label>
+        </div>
 
-        <div className='flex-end mx-3 mb-5 gap-4'>
-          <Link href='/' className='text-gray-500 text-sm'>
+        <div className="flex flex-col">
+          <label
+            htmlFor="valor"
+            className="font-satoshi font-semibold text-base text-gray-700 mb-2"
+          >
+            Valor
+          </label>
+          <input
+            id="valor"
+            name="valor"
+            type="text"
+            value={post.valor}
+            onChange={handleInputChange}
+            placeholder="Digite o valor"
+            required
+            className="form_input"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label
+            htmlFor="chavePix"
+            className="font-satoshi font-semibold text-base text-gray-700 mb-2"
+          >
+            Chave PIX
+          </label>
+          <input
+            id="chavePix"
+            name="chavePix"
+            type="text"
+            value={post.chavePix}
+            onChange={handleInputChange}
+            placeholder="Digite a chave PIX"
+            required
+            className="form_input"
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label
+            htmlFor="numPessoas"
+            className="font-satoshi font-semibold text-base text-gray-700 mb-2"
+          >
+            Número de pessoas
+          </label>
+          <select
+            id="numPessoas"
+            name="numPessoas"
+            value={post.numPessoas}
+            onChange={handleSelectChange}
+            required
+            className="form_select"
+          >
+            <option value="" disabled>
+              Selecione o número de pessoas
+            </option>
+            {Array.from({ length: 21 }, (_, index) => (
+              <option key={index + 10} value={index + 10}>
+                {index + 10}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex-end mx-3 mb-5 gap-4">
+          <Link href="/" className="text-gray-500 text-sm">
             Cancelar
           </Link>
 
           <button
-            type='submit'
+            type="submit"
             disabled={submitting}
-            className='px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white'
+            className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
           >
             {submitting ? `${type}ing...` : type}
           </button>

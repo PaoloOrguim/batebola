@@ -11,9 +11,12 @@ const CriarEvento = () => {
 
   const [submitting, setSubmitting] = useState(false);
   const [post, setPost] = useState({
-    prompt:'',
-    tag:'',
-  })
+    esporte: "",
+    endereco: "",
+    valor: "",
+    chavePix: "",
+    numPessoas: "",
+  });
 
   const createPrompt = async (e) => {
     e.preventDefault();
@@ -22,8 +25,11 @@ const CriarEvento = () => {
           const res = await fetch('/api/prompt/new', {
             method: 'POST',
             body: JSON.stringify({
-              prompt: post.prompt,
-              tag: post.tag,
+              esporte: post.esporte,
+              endereco: post.endereco,
+              valor: post.valor,
+              chavePix: post.chavePix,
+              numPessoas: post.numPessoas,
               userId: session?.user.id
             }),
           });
