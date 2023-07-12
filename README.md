@@ -17,6 +17,6 @@ Para rodar o projeto, entrem no cmd e:
 $ cd pasta/do/projeto
 $ git clone https://github.com/PaoloOrguim/batebola.git
 $ cd pasta/do/projeto/batebola
-$ npm install
+$ npm install bcrypt mongodb mongoose next-auth react-datepicker date-fns
 $ npm run dev
 ```
